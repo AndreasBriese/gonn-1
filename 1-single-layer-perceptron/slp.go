@@ -80,9 +80,15 @@ func test(numSamples int, weights, Y []float64, X [][]float64) {
 		activation := dotProduct(weights, X[p])
 		target := Y[p]
 		if output {
-			fmt.Printf("For index %d\tpredicted%.2f\tactual%.2f\n", p, activation, target)
+			fmt.Printf("For index %d\tpredicted %.2f\tactual %.2f\ttherefore %v\n", p, activation, target, equals(activation, target))
 		}
 	}
+}
+
+func equals(predicted, actual float64) bool {
+	bothOne := predicted > 0.5 && actual > 0.5
+	bothZero := predicted < 0.5 && actual < 0.5
+	return bothOne || bothZero
 }
 
 var output = true
