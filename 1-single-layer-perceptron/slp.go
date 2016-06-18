@@ -68,8 +68,8 @@ func train(numEpochs, numFeatures, numSamples int, alpha float64, weights, Y []f
 			activation := dotProduct(weights, X[p])
 			target := Y[p]
 			errorTerm := target - activation
-			mulMatrix(tempWeights, errorTerm*alpha, X[p])
 
+			mulMatrix(tempWeights, errorTerm*alpha, X[p])
 			addMatrix(weights, tempWeights)
 		}
 	}
